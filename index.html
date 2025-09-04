@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.J. Balson & Son - Design Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic presents a logical narrative flowing from a high-level project summary to a granular analysis of the design system. It starts with a clear title, then visually breaks down the core typography for desktop and mobile, making the style guide tangible. This is followed by a card-based grid detailing the review and action plan for each specific website page. The structure concludes with charts that summarize key design metrics. This top-down approach was chosen to give the client a comprehensive yet easily digestible overview, confirming a deep understanding of the design before development begins, and turning the static report into a visual confirmation tool. -->
+    <!-- Visualization & Content Choices: 
+        - Typography Styles -> Goal: Inform/Compare -> Method: Styled HTML elements that directly apply the specified font sizes, weights, and cases from the report. -> Interaction: None, it's a direct visual representation. -> Justification: More effective than a chart, as it provides a true-to-life preview of the final typography. Implemented with HTML/CSS.
+        - Page-by-Page Review -> Goal: Organize/Inform -> Method: A responsive grid of Material Design-style cards, each dedicated to a page from the report (Homepage, Product Page, etc.). -> Interaction: None. -> Justification: Cards cleanly segment the analysis for each page, making the information organized and easy to scan. Implemented with HTML/Tailwind.
+        - Font Size Comparison -> Goal: Compare -> Method: Bar charts comparing the pixel heights of different text elements (Headlines, Body, etc.) for desktop and mobile. -> Interaction: Tooltips on hover. -> Justification: Fulfills the need for data visualization by providing a clear comparison of the typographic scale across devices. Implemented with Chart.js/Canvas.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F0F8FF;
+        }
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+
+        <header class="text-center mb-12 border-b-2 border-[#007BFF] pb-6">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003F88]">R.J. Balson & Son</h1>
+            <p class="text-xl md:text-2xl text-gray-600 mt-2">Design to Development Blueprint</p>
+        </header>
+
+        <section id="style-guide" class="mb-16">
+            <h2 class="text-3xl font-display text-center font-bold text-[#003F88] mb-8">Visual Style & Typography</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-display font-bold text-center mb-6">Desktop Styles</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm text-gray-500">Headline 1</p>
+                            <p class="font-bold" style="text-transform: uppercase; font-size: 26px; line-height: 1.1;">England's Oldest Family Butcher</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Headline 2</p>
+                            <p class="font-bold" style="font-size: 24px; line-height: 1.2;">Handcrafted British sausages</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Body</p>
+                            <p style="font-size: 14px; line-height: 1.6;">Our signature pork sausage is a faithful revival of the British banger.</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Button</p>
+                            <button class="text-white font-bold" style="background-color: #007BFF; text-transform: uppercase; font-size: 14px; height: 55px; min-width: 165px; padding: 0 25px;">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-display font-bold text-center mb-6">Mobile Styles</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm text-gray-500">Headline 1</p>
+                            <p class="font-bold" style="text-transform: uppercase; font-size: 16px; line-height: 1.2;">England's Oldest Family Butcher</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Headline 2</p>
+                            <p class="font-bold" style="font-size: 10px; line-height: 1.4;">Handcrafted British sausages</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Body</p>
+                            <p style="font-size: 10px; line-height: 1.5;">Our signature pork sausage is a faithful revival of the British banger.</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Button</p>
+                            <button class="text-white font-bold" style="background-color: #007BFF; text-transform: uppercase; font-size: 10px; height: 45px; min-width: 144px; padding: 0 12px;">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-review" class="mb-16">
+            <h2 class="text-3xl font-display text-center font-bold text-[#003F88] mb-8">Page-by-Page Review & Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-bold font-display mb-3">Homepage</h4>
+                    <p class="font-bold text-sm text-[#007BFF]">Review:</p>
+                    <p class="text-sm mb-3">The homepage looks great. The core elements—brand story, product highlights, and call to action—are well-placed, and the visual hierarchy is clear.</p>
+                    <p class="font-bold text-sm text-[#007BFF]">What I'll do:</p>
+                    <p class="text-sm">I will ensure the final website is pixel-perfect and the visual hierarchy is maintained to guide the user's eye effectively.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-bold font-display mb-3">Our Story Page</h4>
+                    <p class="font-bold text-sm text-[#007BFF]">Review:</p>
+                    <p class="text-sm mb-3">This page effectively tells the brand's history and legacy. The layout is clean and presents the information in an engaging way.</p>
+                    <p class="font-bold text-sm text-[#007BFF]">What I'll do:</p>
+                    <p class="text-sm">I will build out this page with a smooth, responsive timeline that works on all screen sizes, ensuring the story flows seamlessly.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-bold font-display mb-3">Product Page</h4>
+                    <p class="font-bold text-sm text-[#007BFF]">Review:</p>
+                    <p class="text-sm mb-3">The product page is straightforward, with clear images and a call-to-action to add to the cart.</p>
+                    <p class="font-bold text-sm text-[#007BFF]">What I'll do:</p>
+                    <p class="text-sm">I'll ensure the product details are easy to read and the "add to cart" functionality is seamless and responsive.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-bold font-display mb-3">Recipes Page</h4>
+                    <p class="font-bold text-sm text-[#007BFF]">Review:</p>
+                    <p class="text-sm mb-3">This page is strong on visuals.</p>
+                    <p class="font-bold text-sm text-[#007BFF]">What I'll do:</p>
+                    <p class="text-sm">I'll make sure the recipe details are easy to read and follow, and that the images load quickly for a great user experience.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-bold font-display mb-3">Contact/FAQ Page</h4>
+                    <p class="font-bold text-sm text-[#007BFF]">Review:</p>
+                    <p class="text-sm mb-3">The layout is clean and simple.</p>
+                    <p class="font-bold text-sm text-[#007BFF]">What I'll do:</p>
+                    <p class="text-sm">I'll make sure the form is fully functional and easy to use on all devices, with clear input fields and a confirmation message.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-bold font-display mb-3">Footer</h4>
+                    <p class="font-bold text-sm text-[#007BFF]">Review:</p>
+                    <p class="text-sm mb-3">The footer is consistent across all pages, which is great for user experience.</p>
+                    <p class="font-bold text-sm text-[#007BFF]">What I'll do:</p>
+                    <p class="text-sm">I'll ensure all the links are working and easy to click on any device.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="data-viz" class="mb-16">
+            <h2 class="text-3xl font-display text-center font-bold text-[#003F88] mb-8">Typographic Scale Comparison</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-display font-bold text-center mb-4">Desktop Font Height (px)</h3>
+                    <div class="chart-container">
+                        <canvas id="desktopChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-display font-bold text-center mb-4">Mobile Font Height (px)</h3>
+                    <div class="chart-container">
+                        <canvas id="mobileChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 pt-6 border-t-2 border-[#007BFF]">
+            <p class="text-lg text-gray-700">I'm ready to build it out.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const desktopData = {
+            labels: ['Headline 1', 'Headline 2/3', 'Body', 'Subhead 1/2', 'Caption'],
+            heights: [26, 24, 14, 14, 10]
+        };
+        const mobileData = {
+            labels: ['Headline 1', 'Headline 3', 'Headline 2', 'Body', 'Caption', 'Subhead 1/2'],
+            heights: [16, 12, 10, 10, 9, 10]
+        };
+        const chartColors = ['#003F88', '#007BFF', '#4DA8DA', '#89CFF0', '#AEEEEE', '#ADD8E6'];
+
+        const tooltipCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        new Chart(document.getElementById('desktopChart'), {
+            type: 'bar',
+            data: {
+                labels: desktopData.labels,
+                datasets: [{
+                    label: 'Font Height (px)',
+                    data: desktopData.heights,
+                    backgroundColor: chartColors,
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...tooltipCallback,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    ...tooltipCallback.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('mobileChart'), {
+            type: 'bar',
+            data: {
+                labels: mobileData.labels,
+                datasets: [{
+                    label: 'Font Height (px)',
+                    data: mobileData.heights,
+                    backgroundColor: chartColors,
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...tooltipCallback,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    ...tooltipCallback.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
